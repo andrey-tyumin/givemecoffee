@@ -44,18 +44,6 @@ resource "aws_instance" "hw" {
   }
 }
 
-resource "aws_instance" "hww" {
-#  ami	= "ami-0ba62214afa52bec7"
-  instance_type = local.instance_type_map[terraform.workspace]
-#  for_each = local.instance_count_map
-  for_each = { for n in local.instance_count_map : n => "${n}" }
-  ami = " ami-0ba62214afa52bec7"
-
-lifecycle {
-  create_before_destroy = true
-  }
-}
-
 data "aws_region" "current" {}
 
 data "aws_caller_identity" "current" {}
