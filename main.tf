@@ -35,8 +35,8 @@ locals {
 
 resource "aws_instance" "hw" {
   ami           = "ami-00399ec92321828f5"
-  instance_type = local.instance_type_map[terraform.workspace]
-  count = local.instance_count_map[terraform.workspace]
+  instance_type = "t2.micro"
+  count = 2
   associate_public_ip_address = "true"
 
   tags = {
