@@ -18,11 +18,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-
-resource "aws_instance" "hw" {
-  ami           = "ami-00399ec92321828f5"
-  instance_type = t2.micro
-  count = 2
+resource "aws_instance" "hw72" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+  hibernation	= true
+  host_id	= "hw72_host"
   associate_public_ip_address = "true"
 
   tags = {
@@ -30,9 +30,6 @@ resource "aws_instance" "hw" {
   }
 }
 
-
 data "aws_region" "current" {}
 
 data "aws_caller_identity" "current" {}
-
-
