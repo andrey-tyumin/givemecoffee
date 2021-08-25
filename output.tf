@@ -10,11 +10,3 @@ output "current_region" {
   description = "current AWS region"  
   value       = data.aws_region.current.name
 }
-
-output "current_private_ip" {
-  value       = aws_instance.hw[0].private_ip
-}
-
-output "instance_subnet_id" {
-  value       = aws_instance.hw[0].subnet_id
-}
